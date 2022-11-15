@@ -30,28 +30,28 @@ class Config {
     // GENERAL SETTINGS
     // ------------------------------------------------------------------------
 
-    const BASE_URL      = 'http://url-to-easyappointments-directory';
-    const LANGUAGE      = 'english';
-    const DEBUG_MODE    = FALSE;
+    const BASE_URL      = $_ENV["BASE_URL"] ?? 'http://localhost';
+    const LANGUAGE      = $_ENV["LANGUAGE"] ?? 'english';
+    const DEBUG_MODE    = filter_var( $_ENV["DEBUG_MODE"] ?? false, FILTER_VALIDATE_BOOLEAN);
 
     // ------------------------------------------------------------------------
     // DATABASE SETTINGS
     // ------------------------------------------------------------------------
 
-    const DB_HOST       = 'localhost';
-    const DB_NAME       = 'easyappointments';
-    const DB_USERNAME   = 'root';
-    const DB_PASSWORD   = 'root';
+    const DB_HOST       = $_ENV["DB_HOST"] ?? 'localhost';
+    const DB_NAME       = $_ENV["DB_NAME"] ?? 'easyappointments';
+    const DB_USERNAME   = $_ENV["DB_USERNAME"] ?? 'root';
+    const DB_PASSWORD   = $_ENV["DB_PASSWORD"] ?? 'root';
 
     // ------------------------------------------------------------------------
     // GOOGLE CALENDAR SYNC
     // ------------------------------------------------------------------------
 
-    const GOOGLE_SYNC_FEATURE   = FALSE; // Enter TRUE or FALSE
-    const GOOGLE_PRODUCT_NAME   = '';
-    const GOOGLE_CLIENT_ID      = '';
-    const GOOGLE_CLIENT_SECRET  = '';
-    const GOOGLE_API_KEY        = '';
+    const GOOGLE_SYNC_FEATURE   = filter_var( $_ENV["GOOGLE_SYNC_FEATURE"] ?? false, FILTER_VALIDATE_BOOLEAN); // Enter TRUE or FALSE
+    const GOOGLE_PRODUCT_NAME   = $_ENV["GOOGLE_PRODUCT_NAME"] ?? '';
+    const GOOGLE_CLIENT_ID      = $_ENV["GOOGLE_CLIENT_ID"] ?? '';
+    const GOOGLE_CLIENT_SECRET  = $_ENV["GOOGLE_CLIENT_SECRET"] ?? '';
+    const GOOGLE_API_KEY        = $_ENV["GOOGLE_API_KEY"] ?? '';
 }
 
 /* End of file config.php */
